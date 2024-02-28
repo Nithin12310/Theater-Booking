@@ -26,3 +26,6 @@ logging:
         data:
           mongodb:
             core: DEBUG
+
+key_id: ${KEY_ID}
+secret_key: ${SECRET_KEY}
