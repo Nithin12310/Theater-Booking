@@ -6,12 +6,7 @@ import com.example.Theater.Booking.dto.ResponseDTO;
 import com.example.Theater.Booking.model.*;
 import com.example.Theater.Booking.repository.*;
 import com.example.Theater.Booking.service.PaymentService;
-import com.razorpay.Order;
-import com.razorpay.RazorpayClient;
-import com.razorpay.RazorpayException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -34,10 +29,10 @@ public class PaymentServiceImplementation implements PaymentService {
 
     @Autowired
     LinkTypeOfferRepository linkTypeOfferRepository;
-    @Value("${key_id}")
-    private String keyId;
-    @Value("${secret_key}")
-    private String secretKey;
+//    @Value("${key_id}")
+//    private String keyId;
+//    @Value("${secret_key}")
+//    private String secretKey;
 
     @Override
     public ResponseEntity<ResponseDTO> payment(PayamentDTO payamentDTO) throws ParseException {
@@ -66,24 +61,25 @@ public class PaymentServiceImplementation implements PaymentService {
 
     @Override
     public String paymentProcess(String amount) {
-        RazorpayClient razorpayClient = null;
-        try {
-            razorpayClient = new RazorpayClient(keyId, secretKey);
-        } catch (RazorpayException e) {
-            throw new RuntimeException(e);
-        }
-        JSONObject orderRequest = new JSONObject();
-        orderRequest.put("amount", amount);
-        orderRequest.put("currency", "INR");
-        orderRequest.put("receipt", "order_receipt");
-        Order order = null;
-        try {
-            order = razorpayClient.orders.create(orderRequest);
-        } catch (RazorpayException e) {
-            throw new RuntimeException(e);
-        }
-        String orderId = order.get("id");
-        return orderId;
+//        RazorpayClient razorpayClient = null;
+//        try {
+//            razorpayClient = new RazorpayClient(keyId, secretKey);
+//        } catch (RazorpayException e) {
+//            throw new RuntimeException(e);
+//        }
+//        JSONObject orderRequest = new JSONObject();
+//        orderRequest.put("amount", amount);
+//        orderRequest.put("currency", "INR");
+//        orderRequest.put("receipt", "order_receipt");
+//        Order order = null;
+//        try {
+//            order = razorpayClient.orders.create(orderRequest);
+//        } catch (RazorpayException e) {
+//            throw new RuntimeException(e);
+//        }
+//        String orderId = order.get("id");
+//        return orderId;
+        return "";
     }
 
     public Rewards rewards(User user) throws ParseException {
